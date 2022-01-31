@@ -25,13 +25,11 @@ function SelectedShowContainer(props) {
     }
   }
 
-  const filteredEpisodes = props.allEpisodes.filter((e) => e.season === props.selectedSeason);
-  console.log(props.selectedSeason);
-  // function mapEpisodes() {
-  //   const filteredEpisodeList = props.allEpisodes.filter((e) => e.season === props.selectedSeason);
+  function mapEpisodes() {
+    const filteredEpisodeList = props.allEpisodes.filter((e) => e.season == props.selectedSeason);
     
-  //   return (filteredEpisodeList.map((e) => <Episode eachEpisode={e} key={e.id} />))
-  // }
+    return (filteredEpisodeList.map((e) => <Episode eachEpisode={e} key={e.id} />))
+  }
 
   function handleSelectionChange(e) {
     props.setSelectedSeason(e.target.value);
@@ -50,7 +48,8 @@ function SelectedShowContainer(props) {
       <select style={{ display: "block" }} onChange={handleSelectionChange} value = {props.selectedSeason}>
         {mapSeasons()}
       </select>
-      {filteredEpisodes.map((e) => <Episode eachEpisode={e} key={e.id} />)}
+      {mapEpisodes()}
+      {/* {filteredEpisodes.map((e) => <Episode eachEpisode={e} key={e.id} />)} */}
     </div>
   );
 }
